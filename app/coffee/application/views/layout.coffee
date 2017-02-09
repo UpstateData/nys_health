@@ -8,12 +8,12 @@ class ApplicationLayout extends Marionette.LayoutView
   template: false
 
   regions:
-    header:         '[app-region=header]'
-    sidebar:        '[app-region=sidebar]'
-    breadcrumb:     '[app-region=breadcrumb]'
-    overlay:        '[app-region=overlay]'
-    flash:          '[app-region=flash]'
-    mainRegion:     '[app-region=main]'
+    header:     '[app-region=header]'
+    sidebar:    '[app-region=sidebar]'
+    breadcrumb: '[app-region=breadcrumb]'
+    overlay:    '[app-region=overlay]'
+    flash:      '[app-region=flash]'
+    main:       '[app-region=main]'
 
 # # # # #
 

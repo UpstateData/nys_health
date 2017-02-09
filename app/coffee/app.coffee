@@ -4,7 +4,6 @@
 class Application extends Marionette.Service
 
   radioEvents:
-    'db ready':     'onReady'
     'app redirect': 'redirectTo'
 
   # Invoked after constructor
@@ -16,6 +15,7 @@ class Application extends Marionette.Service
     # Starts Henson.js Components
     Backbone.Radio.channel('breadcrumb').trigger('ready')
     Backbone.Radio.channel('overlay').trigger('ready')
+    @onReady()
     return true
 
   # Starts the application
