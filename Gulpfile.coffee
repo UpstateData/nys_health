@@ -13,21 +13,6 @@ paths =
     src: 'coffee/manifest.coffee'
     dest: 'app.js'
 
-  server_bundle:
-    src: './app_server/**/*.coffee'
-    dest: './build/server_js/'
-
-  nwk_package:
-    src:  './app/nwk_package.coffee'
-    dest: './build/package.json'
-
-  nwk_release:
-    src:        './build/**/**'
-    version:    '0.14.6'
-    # platforms:  ['win32','win64','osx32','osx64','linux32','linux64'] # All options
-    # platforms:  ['win64','osx64']
-    platforms:  ['win64']
-
   sass:
     src:  './app/sass/app.sass'
     dest: './build/css/'
@@ -40,10 +25,6 @@ paths =
     img:
       src:  './app/img/*'
       dest: './build/img'
-
-    python:
-      src:  './app/python/*'
-      dest: './build/python'
 
   concat:
     dest: 'vendor.js'
@@ -63,19 +44,6 @@ paths =
       nodeModules + 'tether/dist/js/tether.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
       nodeModules + 'bluebird/js/browser/bluebird.min.js'
-      nodeModules + 'd3/build/d3.js' # TODO - RDF viewer is preventing update.
-      # nodeModules + 'jsonld/js/jsonld.js'
-      # nodeModules + 'dagre/dist/dagre.js'
-      nodeModules + 'three/build/three.js'
-      # nodeModules + 'three/examples/js/controls/TrackballControls.js'
-      nodeModules + 'three/examples/js/controls/OrbitControls.js'
-      # nodeModules + 'three/build/three.modules.js'
-      # nodeModules + 'facetview2/es.js'
-      # nodeModules + 'facetview2/bootstrap4.facetview.theme.js'
-      # nodeModules + 'facetview2/jquery.facetview2.js'
-      nodeModules + 'facetedsearch/facetedsearch.js'
-      nodeModules + 'dexie/dist/dexie.js'
-      nodeModules + 'drift-zoom/dist/Drift.js'
     ]
 
 # Import Plugins
@@ -124,67 +92,11 @@ gulp.task 'watch', ->
   gulp.watch paths.src + '**/*.jade',    ['bundle', 'jade']
   gulp.watch paths.src + '**/*.sass',    ['sass']
 
-# Watch Task
-gulp.task 'nodewebkit_watch', ->
-  gulp.watch './app_server/**/*.coffee',  ['server_bundle']
-
-# # # # #
-
-# NodeWebKit Package.json
-gulp.task 'nodewebkit_package', ->
-  str = require paths.nwk_package.src
-  plugins.fs.writeFileSync( paths.nwk_package.dest, str)
-  return true
-
-# NodeWebKit Releases
-NwBuilder = require 'nw-builder'
-gulp.task 'nodewebkit_release', ->
-  nw = new NwBuilder
-    files:        paths.nwk_release.src
-    platforms:    paths.nwk_release.platforms
-    version:      paths.nwk_release.version
-    downloadUrl:  'https://dl.nwjs.io/'
-
-  # Log NWK Build
-  nw.on 'log', console.log
-
-  # Build returns a promise
-  nw.build()
-  .then ->
-    console.log 'NWK Build complete'
-    return
-
-  .catch (error) ->
-    console.log 'NWK Build Error!'
-    console.error error
-    return
-
-# Bundle server task
-gulp.task 'server_bundle', ->
-  gulp.src(paths.server_bundle.src)
-    .pipe plugins.plumber()
-    .pipe plugins.coffee({bare: true})
-    .pipe gulp.dest paths.server_bundle.dest
-
-# Copy Python files
-gulp.task 'copy_python', ->
-  gulp.src paths.copy.python.src
-    .pipe plugins.plumber()
-    .pipe gulp.dest paths.copy.python.dest
-
-# # # # #
-
 # Build tasks
 gulp.task 'default', ['dev']
 
 gulp.task 'dev', =>
-  plugins.runSequence.use(gulp)('env_dev', 'copy_fontawesome', 'copy_python', 'copy_images', 'sass', 'jade', 'concat', 'bundle', 'server_bundle', 'watch', 'webserver')
+  plugins.runSequence.use(gulp)('env_dev', 'copy_fontawesome', 'copy_images', 'sass', 'jade', 'concat', 'bundle', 'watch', 'webserver')
 
 gulp.task 'release', =>
-  plugins.runSequence.use(gulp)('env_prod', 'copy_fontawesome', 'copy_python', 'copy_images', 'sass', 'jade', 'concat', 'bundle', 'server_bundle', => console.log 'Release completed.' )
-
-gulp.task 'nwk_dev', =>
-  plugins.runSequence.use(gulp)('env_dev', 'copy_fontawesome', 'copy_python', 'copy_images', 'sass', 'jade', 'concat', 'bundle', 'server_bundle', 'nodewebkit_package', 'watch', 'nodewebkit_watch')
-
-gulp.task 'nwk_release', =>
-  plugins.runSequence.use(gulp)('env_dev', 'copy_fontawesome', 'copy_python', 'copy_images', 'sass', 'jade', 'concat', 'bundle', 'server_bundle', 'nodewebkit_package', 'nodewebkit_release', => console.log 'NWK Release completed.' )
+  plugins.runSequence.use(gulp)('env_prod', 'copy_fontawesome', 'copy_images', 'sass', 'jade', 'concat', 'bundle', => console.log 'Release completed.' )
