@@ -1,19 +1,19 @@
 {
-  "name": "hn_boilerplate",
+  "name": "nys_health",
   "version": "0.0.1",
-  "description": "Boilerplate Henson.js application",
+  "description": "NYS Health Inspections",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HensonJS/hn_boilerplate.git"
+    "url": "git+https://github.com/aeksco/nys_health.git"
   },
   "author": "Alexander Schwartzberg",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HensonJS/hn_boilerplate/issues"
+    "url": "https://github.com/aeksco/nys_health/issues"
   },
   "dependencies": {
     "backbone": "~1.2",
