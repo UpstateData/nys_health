@@ -2,6 +2,11 @@
 class ViolationModel extends Backbone.Model
   defaults: {}
 
+  isCritical: ->
+    return @get('critical_violation') == "Critical Violation"
+
+# # # # #
+
 class ViolationCollection extends Backbone.Collection
   model: ViolationModel
   url: 'https://health.data.ny.gov/resource/5ib6-49en.json'
@@ -41,7 +46,6 @@ class DataModel extends Backbone.Model
 class DataCollection extends Backbone.PageableCollection
   model: DataModel
   url: 'https://health.data.ny.gov/resource/5ib6-49en.json'
-  # https://health.data.ny.gov
 
   mode: 'client'
 
@@ -52,8 +56,6 @@ class DataCollection extends Backbone.PageableCollection
     console.log 'QUERY!'
     console.log data
     @fetch({ data: data })
-
-    # https://health.data.ny.gov/resource/5ib6-49en.json?nys_health_operation_id=695815
 
 # # # # #
 

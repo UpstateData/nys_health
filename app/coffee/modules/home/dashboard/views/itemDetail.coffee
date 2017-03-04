@@ -5,6 +5,15 @@ class ViolationItem extends Mn.LayoutView
   tagName: 'tr'
   template: require './templates/violation_item'
 
+  className: ->
+    if @model.isCritical()
+      return 'table-danger'
+    else
+      return 'table-warning'
+
+  templateHelpers: ->
+    return { date: moment(@model.get('date_of_inspection')).format('MM/DD/YY') }
+
   serializeData: ->
     d = super
     console.log d

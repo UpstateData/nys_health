@@ -1,16 +1,25 @@
 .row
-  .col-xs-4
-    .form-group
-      input.form-control(type='text', name='city', placeholder='City' )
+  //- .col-xs-4
+  //-   .form-group
+  //-     input.form-control(type='text', name='city', placeholder='City' )
 
   .col-xs-4
     .form-group
+      label City
       select.form-control(name='city', placeholder='City' )
         each c in cities
           option= c
 
-  .col-xs-4
-    .form-group
-      select.form-control(name='county', placeholder='County' )
-        each c in counties
-          option= c
+  //- .col-xs-4
+  //-   .form-group
+  //-     label County
+  //-     select.form-control(name='county', placeholder='County' )
+  //-       each c in counties
+  //-         option= c
+
+  //- .col-xs-4
+  //-   .form-group
+  //-     label Zip
+  //-     select.form-control(name='zip')
+  //-       each z in zips
+  //-         option= z

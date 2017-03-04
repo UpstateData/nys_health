@@ -45,6 +45,8 @@ paths =
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
       nodeModules + 'bluebird/js/browser/bluebird.min.js'
       nodeModules + 'backbone.paginator/lib/backbone.paginator.js'
+      nodeModules + 'moment/moment.js'
+      nodeModules + 'select2/dist/js/select2.full.js'
     ]
 
 # Import Plugins

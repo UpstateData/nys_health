@@ -13,10 +13,17 @@ class FormView extends Mn.LayoutView
       zips:     @options.params.get('zips')
     }
 
+  onRender: ->
+    setTimeout(@initSelect2, 200)
+
+  initSelect2: ->
+    # console.log 'INIT SELECT2'
+    $('select').select2({ placehoder: 'City' })
+
   onSelectChange: (e) ->
     # TODO - city, county, zip - else?
     data = Backbone.Syphon.serialize(@)
-    data = {county: data.county}
+    data = {facility_city: data.city}
 
     @collection.query(data)
 

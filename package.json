@@ -59,6 +59,7 @@
     "marionette-service": "~0.0",
     "moment": "~2.10",
     "qs": "~6.0",
+    "select2": "^4.0.3",
     "tether": "~1.1",
     "underscore": "~1.8"
   },
