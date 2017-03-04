@@ -1,7 +1,6 @@
-# nys_health
+# NYS Health Inspections
 
 
-https://health.data.ny.gov/Health/Food-Service-Establishment-Inspections-Beginning-2/2hcc-shji
+Built for [Open Data Day 2017](http://opendataday.org/).
 
-
-https://dev.socrata.com/foundry/health.data.ny.gov/5ib6-49en
+Data pulled from [Health Data NY](https://health.data.ny.gov/Health/Food-Service-Establishment-Inspections-Beginning-2/2hcc-shji).
