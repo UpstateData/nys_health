@@ -20,8 +20,7 @@ class DashboardView extends Mn.LayoutView
     'sync': 'onCollectionSync'
 
   onCollectionSync: =>
-    @renderMapView()
-    # @collection.at(0)?.trigger('selected')
+    @collection.at(0)?.trigger('selected')
 
   onRender: ->
 
@@ -29,27 +28,16 @@ class DashboardView extends Mn.LayoutView
     @formRegion.show new FormView({ collection: @collection, model: @options.query, params: @options.params })
 
     # Renders ListView
-    # listView = new ItemList({ collection: @collection })
-    # listView.on 'childview:selected', (view.model) => @showDetailView(view.model)
-    # @listRegion.show(listView)
-    # @onCollectionSync()
-
-    # Renders Map view
-    @renderMapView()
+    listView = new ItemList({ collection: @collection })
+    listView.on 'childview:selected', (view) => @showDetailView(view.model)
+    @listRegion.show(listView)
+    @onCollectionSync()
 
     # Renders PaginationView
-    # @paginationRegion.show new PaginationView({ collection: @collection })
-
-  renderMapView: =>
-    listView = new MapView({ collection: @collection })
-    listView.on 'childview:selected', (model) => @showDetailView(model)
-    @listRegion.show(listView)
+    @paginationRegion.show new PaginationView({ collection: @collection, pager: true })
 
   showDetailView: (dataset) ->
-    dataset.ensureViolations().then (violations) =>
-      console.log 'GOT VIOLATIONS'
-      console.log violations
-      @detailRegion.show new ItemDetail({ model: dataset, collection: violations })
+    @detailRegion.show new ItemDetail({ model: dataset })
 
 # # # # #
 

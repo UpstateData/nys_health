@@ -1,7 +1,7 @@
 
 class FormView extends Mn.LayoutView
   template: require './templates/form'
-  className: 'card card-block'
+  className: 'card card-block m-b-0'
 
   events:
     'change select': 'onSelectChange'

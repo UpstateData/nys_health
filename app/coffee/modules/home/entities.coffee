@@ -52,9 +52,20 @@ class DataCollection extends Backbone.PageableCollection
   state:
     pageSize: 10
 
+  # Paging Helpers
+  firstPage: ->
+    @getPage( @state.firstPage )
+
+  prevPage: ->
+    @getPreviousPage() if @hasPreviousPage()
+
+  nextPage: ->
+    @getNextPage() if @hasNextPage()
+
+  lastPage: ->
+    @getPage( @state.lastPage )
+
   query: (data={}) ->
-    console.log 'QUERY!'
-    console.log data
     @fetch({ data: data })
 
 # # # # #

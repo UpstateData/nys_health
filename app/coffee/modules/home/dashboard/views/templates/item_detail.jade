@@ -1,17 +1,26 @@
 .row
 
   .col-xs-12
-    p.lead= operation_name
+
+    .row
+      .col-xs-6
+        p.lead= operation_name
+
+        small= address
+        br
+        small= county
+
+      .col-xs-6(data-region='map')
 
   .col-xs-12
-    small= address
-    br
-    small= county
+    hr
 
-  .col-xs-12
-    p.lead Violation History
+  .col-xs-12(data-region='selector')
 
-  .col-xs-12(data-region='violations')
+  //- .col-xs-12
+  //-   hr
+
+  //-   p.lead Violation History
 
   //- .col-xs-12= latitude
   //- .col-xs-12= longitude

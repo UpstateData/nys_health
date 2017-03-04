@@ -15,19 +15,20 @@ class MapView extends Mn.LayoutView
 
     # Sets initial location
     itemLocation =
-      lat: Number(@collection.at(0).get('latitude'))
-      lng: Number(@collection.at(0).get('longitude'))
+      lat: Number(@model.get('latitude'))
+      lng: Number(@model.get('longitude'))
 
     # Map options
     mapOpts =
-      zoom: 8
+      zoom: 12
       center: itemLocation
 
     # Initializes map
     @map = new google.maps.Map(document.getElementById('map'), mapOpts)
 
     # Adds collection to map
-    @addMarkers()
+    # @addMarkers()
+    @addMarker(@model)
 
     return
 
@@ -47,14 +48,14 @@ class MapView extends Mn.LayoutView
       map: @map
 
     # Marker listener
-    marker.addListener 'click', (e) =>
-      # model = @collection.findWhere({ latitude: String(e.latLng.lat()), longitude: String(e.latLng.lng()) })
-      model = @collection.findWhere({ latitude: String(e.latLng.lat()) })
-      console.log model
-      return unless model
-      @trigger 'childview:selected', model
-      # @map.setZoom(8)
-      # @map.setCenter(marker.getPosition())
+    # marker.addListener 'click', (e) =>
+    #   # model = @collection.findWhere({ latitude: String(e.latLng.lat()), longitude: String(e.latLng.lng()) })
+    #   model = @collection.findWhere({ latitude: String(e.latLng.lat()) })
+    #   console.log model
+    #   return unless model
+    #   @trigger 'childview:selected', model
+    #   # @map.setZoom(8)
+    #   # @map.setCenter(marker.getPosition())
 
 # # # # #
 
