@@ -39,7 +39,6 @@ new FlashComponent({ container: AppLayout.flash })
 # They have routes and entities (models and collections)
 # Each route represents an endpoint, or 'page' in the app.
 require './modules/params/factory'
-require './modules/query/factory'
 HomeModule = require './modules/home/router'
 new HomeModule({ container: AppLayout.main })
 

@@ -1,16 +1,37 @@
+mixin smallItem(label, text)
+  small
+    strong #{label}:
+    | &nbsp;
+    | #{text}
+  br
+
+//- // // // // //
+
 .row
 
   .col-xs-12
 
     .row
       .col-xs-6
-        p.lead= operation_name
+        p.lead.m-b-0= operation_name
 
-        small= address
+        small= facility_address
         br
-        small= county
+        small #{facility_city}, #{facility_municipality} #{facility_postal_zipcode}
 
-      .col-xs-6(data-region='map')
+      .col-xs-6
+        if permitted_corp_name
+          +smallItem('Corporation', permitted_corp_name)
+
+        if perm_operator_first_name
+          +smallItem('Operator', perm_operator_last_name + ', ' + perm_operator_first_name)
+
+        if food_service_type
+          +smallItem('Service', food_service_type)
+
+        if food_service_description
+          +smallItem('Type', food_service_description)
+
 
   .col-xs-12
     hr

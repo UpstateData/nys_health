@@ -5,10 +5,13 @@
 
   .col-xs-12
     .form-group
-      label City
+      label Search By City
       select.form-control(name='city', placeholder='City' )
         each c in cities
-          option= c
+          if c == 'TROY'
+            option(selected=true)= c
+          else
+            option= c
 
   //- .col-xs-4
   //-   .form-group

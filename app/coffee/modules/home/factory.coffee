@@ -19,8 +19,9 @@ class DataFactory extends Marionette.Service
       @cached.fetch
         parse: true
         data:
-          "$limit": 10 # TODO - abstract into collection
+          # "$limit": 10 # TODO - abstract into collection
           "$$app_token" : "Avs1fDCIaC9lLqwDz5IQaftgU" # TODO - abstract into collection
+          "facility_city": 'TROY'
 
         success: () => return resolve(@cached)
         error: () => return reject(@cached)

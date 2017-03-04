@@ -47,6 +47,7 @@ paths =
       nodeModules + 'backbone.paginator/lib/backbone.paginator.js'
       nodeModules + 'moment/moment.js'
       nodeModules + 'select2/dist/js/select2.full.js'
+      nodeModules + 'underscore-query/lib/underscore-query.js'
     ]
 
 # Import Plugins

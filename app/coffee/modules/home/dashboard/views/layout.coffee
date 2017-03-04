@@ -1,4 +1,5 @@
 FormView = require './form'
+FilterView = require './filter'
 MapView = require './map'
 ItemList = require './itemList'
 ItemDetail = require './itemDetail'
@@ -12,12 +13,13 @@ class DashboardView extends Mn.LayoutView
 
   regions:
     formRegion:       '[data-region=form]'
+    filterRegion:     '[data-region=filter]'
     listRegion:       '[data-region=list]'
     paginationRegion: '[data-region=pagination]'
     detailRegion:     '[data-region=detail]'
 
   collectionEvents:
-    'sync': 'onCollectionSync'
+    'reset': 'onCollectionSync'
 
   onCollectionSync: =>
     @collection.at(0)?.trigger('selected')
@@ -25,7 +27,10 @@ class DashboardView extends Mn.LayoutView
   onRender: ->
 
     # Renders FormView
-    @formRegion.show new FormView({ collection: @collection, model: @options.query, params: @options.params })
+    @formRegion.show new FormView({ collection: @collection, params: @options.params })
+
+    # Renders Filters
+    @filterRegion.show new FilterView({ collection: @collection })
 
     # Renders ListView
     listView = new ItemList({ collection: @collection })

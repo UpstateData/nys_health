@@ -68,7 +68,7 @@ class DataCollection extends Backbone.PageableCollection
   search: (data={}) ->
     @fetch({ data: data })
 
-  filter: (query, options = {}) ->
+  applyFilter: (query, options = {}) ->
 
     # Returns if current query is the same as the one that we've cached
     return if _.isEqual(@query, query)

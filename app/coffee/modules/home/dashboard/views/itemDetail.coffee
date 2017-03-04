@@ -6,6 +6,9 @@ class ViolationItem extends Mn.LayoutView
   tagName: 'tr'
   template: require './templates/violation_item'
 
+  behaviors:
+    Tooltips: {}
+
   className: ->
     if @model.isCritical()
       return 'table-danger'
