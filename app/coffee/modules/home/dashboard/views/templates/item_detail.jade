@@ -1,9 +1,6 @@
 .row
 
   .col-xs-12
-    #map(style='height:10rem;')
-
-  .col-xs-12
     p.lead= operation_name
 
   .col-xs-12
@@ -11,42 +8,44 @@
     br
     small= county
 
-  .col-xs-12= latitude
-  .col-xs-12= longitude
+  .col-xs-12(data-region='violations')
 
-  .col-xs-12= critical_violation
-  .col-xs-12= date_of_inspection
+  //- .col-xs-12= latitude
+  //- .col-xs-12= longitude
 
-  .col-xs-12
-    small= facility
-    br
-    small= facility_address
-    br
-    small= facility_city
-    br
-    small= facility_code
-    br
-    small= facility_municipality
-    br
-    small= facility_postal_zipcode
+  //- .col-xs-12= critical_violation
+  //- .col-xs-12= date_of_inspection
 
-  .col-xs-12= food_service_description
-  .col-xs-12= food_service_type
+  //- .col-xs-12
+  //-   small= facility
+  //-   br
+  //-   small= facility_address
+  //-   br
+  //-   small= facility_city
+  //-   br
+  //-   small= facility_code
+  //-   br
+  //-   small= facility_municipality
+  //-   br
+  //-   small= facility_postal_zipcode
 
-  .col-xs-12= fs_facility_state
-  .col-xs-12= inspection_type
-  .col-xs-12= local_health_department
-  .col-xs-12= nys_health_operation_id
-  .col-xs-12= nysdoh_gazetteer_1980
+  //- .col-xs-12= food_service_description
+  //- .col-xs-12= food_service_type
 
-  .col-xs-12= perm_operator_first_name
-  .col-xs-12= perm_operator_last_name
-  .col-xs-12= permit_expiration_date
-  .col-xs-12= permitted_corp_name
+  //- .col-xs-12= fs_facility_state
+  //- .col-xs-12= inspection_type
+  //- .col-xs-12= local_health_department
+  //- .col-xs-12= nys_health_operation_id
+  //- .col-xs-12= nysdoh_gazetteer_1980
 
-  .col-xs-12= total_crit_not_corrected
-  .col-xs-12= total_critical_violations
-  .col-xs-12= total_noncritical_violations
+  //- .col-xs-12= perm_operator_first_name
+  //- .col-xs-12= perm_operator_last_name
+  //- .col-xs-12= permit_expiration_date
+  //- .col-xs-12= permitted_corp_name
 
-  .col-xs-12= violation_description
-  .col-xs-12= violation_item
+  //- .col-xs-12= total_crit_not_corrected
+  //- .col-xs-12= total_critical_violations
+  //- .col-xs-12= total_noncritical_violations
+
+  //- .col-xs-12= violation_description
+  //- .col-xs-12= violation_item

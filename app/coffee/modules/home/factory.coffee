@@ -17,6 +17,7 @@ class DataFactory extends Marionette.Service
     new Promise (resolve, reject) =>
 
       @cached.fetch
+        parse: true
         data:
           "$limit": 10 # TODO - abstract into collection
           "$$app_token" : "Avs1fDCIaC9lLqwDz5IQaftgU" # TODO - abstract into collection

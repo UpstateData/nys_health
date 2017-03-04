@@ -8,13 +8,15 @@ class DashboardRoute extends require 'hn_routing/lib/route'
 
   breadcrumbs: [{ text: 'Dashboard' }]
 
-  # TODO - abstract some of this into the collection or factory
   fetch: ->
+    @query  = Backbone.Radio.channel('query').request('model')
+    @params = Backbone.Radio.channel('params').request('model')
+
     Backbone.Radio.channel('data').request('collection')
     .then (collection) => @collection = collection
 
   render: ->
-    @container.show new LayoutView({ collection: @collection })
+    @container.show new LayoutView({ collection: @collection, query: @query, params: @params })
 
 # # # # #
 

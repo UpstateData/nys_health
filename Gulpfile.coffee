@@ -44,6 +44,7 @@ paths =
       nodeModules + 'tether/dist/js/tether.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
       nodeModules + 'bluebird/js/browser/bluebird.min.js'
+      nodeModules + 'backbone.paginator/lib/backbone.paginator.js'
     ]
 
 # Import Plugins
