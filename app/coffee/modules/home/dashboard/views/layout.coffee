@@ -1,3 +1,4 @@
+FormView = require './form'
 
 # # # # #
 
@@ -14,9 +15,38 @@ class ItemList extends Mn.CollectionView
 
 # # # # #
 
+# Google Maps API Token:
+# AIzaSyAsf2RzfQhI6LjmloxRM993gdLBFnBoxT8
+
+# TODO - abstract into MapView
 class ItemDetail extends Mn.LayoutView
   className: 'card card-block'
   template: require './templates/item_detail'
+
+  onRender: ->
+    setTimeout(@initMap, 100)
+
+  initMap: =>
+
+    # Item Location
+    itemLocation =
+      lat: Number(@model.get('latitude'))
+      lng: Number(@model.get('longitude'))
+
+    # Map options
+    mapOpts =
+      zoom: 6
+      center: itemLocation
+
+    # Initializes map
+    map = new google.maps.Map(document.getElementById('map'), mapOpts)
+
+    # Initializes marker
+    marker = new google.maps.Marker
+      position: itemLocation
+      map: map
+
+    return
 
 # # # # #
 
@@ -25,10 +55,16 @@ class DashboardView extends Mn.LayoutView
   className: 'container-fluid'
 
   regions:
+    formRegion:   '[data-region=form]'
     listRegion:   '[data-region=list]'
     detailRegion: '[data-region=detail]'
 
   onRender: ->
+
+    # Renders FormView
+    @formRegion.show new FormView()
+
+    # Renders ListView
     listView = new ItemList({ collection: @collection })
     listView.on 'childview:selected', (view) => @showDetailView(view.model)
     @listRegion.show(listView)
