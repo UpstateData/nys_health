@@ -61,7 +61,8 @@
     "qs": "~6.0",
     "select2": "^4.0.3",
     "tether": "~1.1",
-    "underscore": "~1.8"
+    "underscore": "~1.8",
+    "underscore-query": "~2.0"
   },
   "homepage": "https://github.com/HensonJS/hn_boilerplate#readme"
 }

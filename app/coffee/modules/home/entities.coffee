@@ -65,8 +65,27 @@ class DataCollection extends Backbone.PageableCollection
   lastPage: ->
     @getPage( @state.lastPage )
 
-  query: (data={}) ->
+  search: (data={}) ->
     @fetch({ data: data })
+
+  filter: (query, options = {}) ->
+
+    # Returns if current query is the same as the one that we've cached
+    return if _.isEqual(@query, query)
+
+    # Caches complete unfiltered collection
+    @unfilteredCollection ||= new Backbone.Collection(@fullCollection.models)
+
+    # Returns for empty query on complete collection
+    return @fullCollection.models if @fullCollection.length == @unfilteredCollection.length && _.isEmpty(query)
+
+    # Caches and performs query
+    @query = query
+    models = _.query( _.clone(@unfilteredCollection.toJSON()), query )
+
+    # Set fullCollection with query result for accurate pagination and returns models
+    @fullCollection.reset(models)
+    return models
 
 # # # # #
 

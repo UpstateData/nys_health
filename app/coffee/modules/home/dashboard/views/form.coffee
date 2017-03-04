@@ -25,7 +25,7 @@ class FormView extends Mn.LayoutView
     data = Backbone.Syphon.serialize(@)
     data = {facility_city: data.city}
 
-    @collection.query(data)
+    @collection.search(data)
 
 # # # # #
 
