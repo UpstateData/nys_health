@@ -1,4 +1,4 @@
 # App configuration manifest
 require './jwt'
-require './cors'
+# require './cors'
 require './marionette'

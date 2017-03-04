@@ -1,3 +1,4 @@
+require './factory'
 DashboardRoute = require './dashboard/route'
 
 # # # # #
