@@ -22,11 +22,6 @@ class ViolationItem extends Mn.LayoutView
   templateHelpers: ->
     return { date: moment(@model.get('date_of_inspection')).format('MM/DD/YY') }
 
-  serializeData: ->
-    d = super
-    console.log d
-    return d
-
 # # # # #
 
 class ViolationList extends Mn.CompositeView

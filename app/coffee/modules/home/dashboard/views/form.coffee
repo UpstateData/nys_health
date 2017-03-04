@@ -17,7 +17,6 @@ class FormView extends Mn.LayoutView
     setTimeout(@initSelect2, 200)
 
   initSelect2: ->
-    # console.log 'INIT SELECT2'
     $('select').select2({ placehoder: 'City' })
 
   onSelectChange: (e) ->

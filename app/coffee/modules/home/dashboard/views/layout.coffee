@@ -27,8 +27,6 @@ class DashboardView extends Mn.LayoutView
     @onCollectionReset()
 
   onCollectionReset: =>
-    console.log 'RESET'
-    console.log @collection.at(0)
     setTimeout( =>
       @collection.at(0)?.trigger('selected')
     , 200)
