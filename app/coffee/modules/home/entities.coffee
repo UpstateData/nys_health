@@ -66,7 +66,8 @@ class DataCollection extends Backbone.PageableCollection
     @getPage( @state.lastPage )
 
   search: (data={}) ->
-    @fetch({ data: data })
+    delete @unfilteredCollection
+    @fetch({ data: data, reset: true })
 
   applyFilter: (query, options = {}) ->
 

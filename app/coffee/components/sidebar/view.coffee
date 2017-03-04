@@ -8,7 +8,8 @@ class SidebarView extends Marionette.LayoutView
   tagName: 'nav'
 
   menuItems: [
-    { href: '#', icon: 'fa-home', title: 'Dashboard', divider: true }
+    { href: '#', icon: 'fa-home', title: 'Dashboard' }
+    { href: '#about', icon: 'fa-question-circle', title: 'About', divider: true }
   ]
 
   events:

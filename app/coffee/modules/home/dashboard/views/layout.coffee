@@ -19,9 +19,10 @@ class DashboardView extends Mn.LayoutView
     detailRegion:     '[data-region=detail]'
 
   collectionEvents:
-    'reset': 'onCollectionSync'
+    'sync': 'onCollectionSync'
 
   onCollectionSync: =>
+    @showFilterView()
     @collection.at(0)?.trigger('selected')
 
   onRender: ->
@@ -30,7 +31,7 @@ class DashboardView extends Mn.LayoutView
     @formRegion.show new FormView({ collection: @collection, params: @options.params })
 
     # Renders Filters
-    @filterRegion.show new FilterView({ collection: @collection })
+    @showFilterView()
 
     # Renders ListView
     listView = new ItemList({ collection: @collection })
@@ -43,6 +44,10 @@ class DashboardView extends Mn.LayoutView
 
   showDetailView: (dataset) ->
     @detailRegion.show new ItemDetail({ model: dataset })
+
+  showFilterView: ->
+    # Renders Filters
+    @filterRegion.show new FilterView({ collection: @collection })
 
 # # # # #
 
