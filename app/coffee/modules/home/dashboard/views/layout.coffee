@@ -20,10 +20,18 @@ class DashboardView extends Mn.LayoutView
 
   collectionEvents:
     'sync': 'onCollectionSync'
+    'reset': 'onCollectionReset'
 
   onCollectionSync: =>
     @showFilterView()
-    @collection.at(0)?.trigger('selected')
+    @onCollectionReset()
+
+  onCollectionReset: =>
+    console.log 'RESET'
+    console.log @collection.at(0)
+    setTimeout( =>
+      @collection.at(0)?.trigger('selected')
+    , 200)
 
   onRender: ->
 
